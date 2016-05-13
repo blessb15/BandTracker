@@ -24,5 +24,12 @@ private String pass = "blake1997";
     assertTrue(newBand instanceof Band);
   }
 
+  @Test
+  public void Band_BandEquals() {
+    Band newerBand = new Band("The Turtle Killers");
+    Band newBand = new Band("The Turtle Killers");
+    assertTrue(newBand.equals(newerBand));
+  }
+
 
 }
