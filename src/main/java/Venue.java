@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 import org.sql2o.*;
 
 public class Venue {
@@ -16,7 +17,7 @@ public class Venue {
   }
 
   public String getLocation(){
-    return name;
+    return location;
   }
 
   public int getId(){
@@ -29,15 +30,16 @@ public class Venue {
       return false;
     } else {
       Venue newVenue = (Venue) obj;
-      return newVenue.getName().equals(this.getName());
+      return newVenue.getName().equals(this.getName()) && newVenue.getLocation().equals(this.getLocation());
     }
   }
 
   public void save(){
     try(Connection con = DB.sql2o.open()){
-      String sql = "INSERT INTO venues (name) VALUES (:name)";
+      String sql = "INSERT INTO venues (name, location) VALUES (:name, :location)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.getName())
+      .addParameter("location", this.getLocation())
       .executeUpdate()
       .getKey();
     }
@@ -58,6 +60,7 @@ public class Venue {
       return con.createQuery(sql).executeAndFetch(Venue.class);
     }
   }
+
   public void delete(){
     try(Connection con = DB.sql2o.open()){
       String sql = "DELETE FROM venues WHERE id = :id";
@@ -71,5 +74,4 @@ public class Venue {
       .executeUpdate();
     }
   }
-
 }

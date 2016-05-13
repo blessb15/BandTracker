@@ -15,6 +15,9 @@ private String pass = "blake1997";
   public void teardown(){
     try(Connection con = DB.sql2o.open()){
       String sql = "DELETE FROM bands *";
+      con.createQuery(sql).executeUpdate();
+      String sql2 = "DELETE FROM venues *";
+      con.createQuery(sql2).executeUpdate();
     }
   }
 
@@ -22,6 +25,12 @@ private String pass = "blake1997";
   public void Band_BandInstatiatesCorrectly_True() {
     Band newBand = new Band("The Turtle Killers");
     assertTrue(newBand instanceof Band);
+  }
+
+  @Test
+  public void Band_BandInstatiatesWithName_True() {
+    Band newBand = new Band("The Turtle Killers");
+    assertEquals("The Turtle Killers", newBand.getName());
   }
 
   @Test
@@ -40,15 +49,18 @@ private String pass = "blake1997";
 
   @Test
   public void Band_ReturnAllBandsFromDataBase(){
-    Band newBand = new Band("The turtle Killers");
+    Band newBand = new Band("The Turtle Killers");
     newBand.save();
     assertEquals(1, Band.all().size());
   }
-//
-//   @Test
-//   public void Band_BandAddVenue(){
-//     Band newBand = new Band("Dope Diapers");
-//     newBand.save();
-//     Venue newVenue = new Venue("Moda Center", "Portland, Oregon")
-//   }
+
+  @Test
+  public void Band_BandAddVenue(){
+    Band newBand = new Band("Dope Diapers");
+    newBand.save();
+    Venue newVenue = new Venue("Moda Center", "Portland, Oregon");
+    newVenue.save();
+    newBand.addVenue(newVenue);
+    assertEquals(1, newBand.getVenues().size());
+  }
 }

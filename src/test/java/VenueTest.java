@@ -14,7 +14,8 @@ private String pass = "blake1997";
   @After
   public void teardown(){
     try(Connection con = DB.sql2o.open()){
-      String sql = "DELETE FROM venues *";
+      String sql = "DELETE FROM venues*";
+      con.createQuery(sql).executeUpdate();
     }
   }
 
@@ -22,6 +23,18 @@ private String pass = "blake1997";
   public void Venue_VenueInstatiatesCorrectly_True() {
     Venue newVenue = new Venue("Moda Center", "Portland, Oregon");
     assertTrue(newVenue instanceof Venue);
+  }
+
+  @Test
+  public void Venue_VenueInstatiatesWithName_True() {
+    Venue newVenue = new Venue("Moda Center", "Portland, Oregon");
+    assertEquals("Moda Center", newVenue.getName());
+  }
+
+  @Test
+  public void Venue_VenueInstatiatesWithLocation_True() {
+    Venue newVenue = new Venue("Moda Center", "Portland, Oregon");
+    assertEquals("Portland, Oregon", newVenue.getLocation());
   }
 
   @Test
