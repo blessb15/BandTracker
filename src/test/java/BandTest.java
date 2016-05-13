@@ -31,5 +31,12 @@ private String pass = "blake1997";
     assertTrue(newBand.equals(newerBand));
   }
 
+  @Test
+  public void Band_BandSavesToDataBase() {
+    Band newBand = new Band("The Turtle Killers");
+    newBand.save();
+    assertTrue(newBand.equals(Band.find(newBand.getId())));
+  }
+
 
 }
