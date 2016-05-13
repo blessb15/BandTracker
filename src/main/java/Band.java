@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.List;
 import org.sql2o.*;
 
 public class Band {
@@ -53,10 +53,10 @@ public class Band {
     }
   }
 
-  public void addVenue(Venue venue)){
+  public void addVenue(Venue venue){
     try(Connection con = DB.sql2o.open()){
       String sql = "INSERT INTO concerts (band_id, venue_id) VALUES (:band_id, :venue_id)";
-      createQuery(sql)
+      con.createQuery(sql)
       .addParameter("band_id", this.getId())
       .addParameter("venue_id", venue.getId())
       .executeUpdate();
@@ -66,12 +66,12 @@ public class Band {
   public void delete(){
     try(Connection con = DB.sql2o.open()){
       String sql = "DELETE FROM bands WHERE id = :id";
-      createQuery(sql)
+      con.createQuery(sql)
       .addParameter("id", this.getId())
       .executeUpdate();
 
       String sql2 = "DELETE FROM concerts WHERE band_id = :band_id";
-      createQuery(sql)
+      con.createQuery(sql)
       .addParameter("band_id", this.getId())
       .executeUpdate();
     }

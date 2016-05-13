@@ -44,4 +44,11 @@ private String pass = "blake1997";
     newBand.save();
     assertEquals(1, Band.all().size());
   }
+//
+//   @Test
+//   public void Band_BandAddVenue(){
+//     Band newBand = new Band("Dope Diapers");
+//     newBand.save();
+//     Venue newVenue = new Venue("Moda Center", "Portland, Oregon")
+//   }
 }
