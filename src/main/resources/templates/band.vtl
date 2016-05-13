@@ -2,7 +2,7 @@
 <br>
 <br>
 #if($band.getVenues())
-<h4>Here are the $band.getName() for this task:</h4>
+<h4>Here are the venues $band.getName() have played at</h4>
   <ul>
   #foreach($venue in $band.getVenues())
     <li>$venue.getName(), $venue.getLocation()</li>
