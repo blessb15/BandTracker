@@ -4,7 +4,7 @@ import org.sql2o.*;
 
 public class Band {
   private String name;
-  private static int id;
+  private int id;
 
   public Band(String name){
     this.name = name;
@@ -90,10 +90,10 @@ public class Band {
       .addParameter("id", this.getId())
       .executeUpdate();
 
-      String sql2 = "DELETE FROM concerts WHERE band_id = :band_id";
-      con.createQuery(sql)
-      .addParameter("band_id", this.getId())
-      .executeUpdate();
+      // String sql2 = "DELETE FROM concerts WHERE band_id = :band_id";
+      // con.createQuery(sql)
+      // .addParameter("band_id", this.getId())
+      // .executeUpdate();
     }
   }
 }

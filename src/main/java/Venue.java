@@ -5,7 +5,7 @@ import org.sql2o.*;
 public class Venue {
   private String name;
   private String location;
-  private static int id;
+  private int id;
 
   public Venue(String name, String location){
     this.name = name;
