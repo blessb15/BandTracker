@@ -1,30 +1,29 @@
-<h2>$band.getName()</h2>
-<br>
-<br>
-#if($band.getVenues())
-<h4>Here are the venues $band.getName() have played at</h4>
-  <ul>
-  #foreach($venue in $band.getVenues())
-    <li>$venue.getName(), $venue.getLocation()</li>
-  #end
-  </ul>
-#end
-<br>
-
-<h4>Add a venue that this band has played at:</h4>
-
-<form action = "/add_venues" method="post">
-  <input id="band_id" name="band_id" type="hidden" value="$band.getId()">
-  <label for="venue_id">Select a Venue to add:</label>
-  <select id="venue_id" name = "venue_id" type="text">
-    #foreach($venue in $venues)
-      <option value="$venue.getId()"> $venue.getName(), $venue.getLocation() </option>
+<div class="center">
+  <h2>$band.getName()</h2>
+  <hr>
+  #if($band.getVenues())
+  <h4>Venues $band.getName() played at:</h4>
+    #foreach($venue in $band.getVenues())
+      <h5>&#10003; $venue.getName(), $venue.getLocation()</h5>
     #end
-  </select>
-  <button type="submit" class="btn btn-sucess">Add Venue</button>
-</form>
-<br>
-<br>
-<a href= "/" class="btn btn-success">Home</a>
-<br>
-<a href= "/bands/$band.getId()/delete" class="btn btn-danger">Delete Band</a>
+  #end
+  <br>
+
+  <h4>Add a venue that this band has played at:</h4>
+
+  <form action = "/add_venues" method="post">
+    <input id="band_id" name="band_id" type="hidden" value="$band.getId()">
+    <label for="venue_id">add a Venue:</label>
+    <select id="venue_id" name = "venue_id" type="text" class="black">
+      #foreach($venue in $venues)
+        <option value="$venue.getId()" class="black"> $venue.getName(), $venue.getLocation() </option>
+      #end
+    </select>
+    <button type="submit" class="btn btn-sucess">+</button>
+  </form>
+  <br>
+  <br>
+  <center><a href= "/" class="btn btn-success center">Home</a></center>
+  <br>
+  <center><a href= "/bands/$band.getId()/delete" class="btn btn-danger center">Delete</a></center>
+</div>

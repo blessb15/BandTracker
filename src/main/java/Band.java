@@ -90,10 +90,10 @@ public class Band {
       .addParameter("id", this.getId())
       .executeUpdate();
 
-      // String sql2 = "DELETE FROM concerts WHERE band_id = :band_id";
-      // con.createQuery(sql)
-      // .addParameter("band_id", this.getId())
-      // .executeUpdate();
+      String sql2 = "DELETE FROM concerts WHERE band_id = :band_id";
+      con.createQuery(sql2)
+      .addParameter("band_id", this.getId())
+      .executeUpdate();
     }
   }
 }

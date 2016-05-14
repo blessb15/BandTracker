@@ -1,45 +1,46 @@
 <h2 class="center">A place where you can add bands and book venues</h2>
+<hr>
 
-<br>
 <br>
 
 <div class = "row">
   <div class = "col-xs-6">
-    <h4>Bands:</h4>
+    <h4 class="font">Bands:</h4>
     #foreach($band in $bands)
-      <li><a href="/bands/$band.getId()">$band.getName()</a></li>
+      <li class="black"><a href="/bands/$band.getId()">$band.getName()</a></li>
     #end
   </div>
   <div class = "col-xs-6">
-    <h4>Venues:</h4>
+    <h4 class="font">Venues:</h4>
     #foreach($venue in $venues)
-      <li>$venue.getName(), $venue.getLocation()</li>
+      <li class = "black">$venue.getName(), $venue.getLocation()</li>
     #end
   </div>
 </div>
+<br>
 
 <div class = "row">
-  <h4 class = "col-xs-6">Add a band:</h4>
-  <h4 class = "col-xs-6">Add a venue:</h4>
+  <h4 class = "col-xs-6 font">Add A Band:</h4>
+  <h4 class = "col-xs-6 font">Add A Venue:</h4>
 </div>
 
 <div class = "row">
   <div class="form-group col-xs-6">
     <form action="/" method="post">
-      <label for="bandName">Band name</label>
+      <label for="bandName">Band Name</label>
       <input id="bandName" name="bandName" type="text" class="form-control" required>
       <br>
-      <button type="submit" class="btn btn-success">Add</button>
+      <button type="submit" class="btn btn-success">+</button>
     </form>
   </div>
   <div class="form-group col-xs-6">
     <form action="/" method="post">
-      <label for="venueName">Venue name</label>
+      <label for="venueName">Venue Name</label>
       <input id="venueName" name="venueName" type="text" class="form-control" required>
-      <label for="venueLocation">Venue location</label>
+      <label for="venueLocation">Venue Location</label>
       <input id="venueLocation" name="venueLocation" type="text" class="form-control" required>
       <br>
-      <button type="submit" class="btn btn-success">Add</button>
+      <button type="submit" class="btn btn-success">+</button>
     </form>
   </div>
 </div>

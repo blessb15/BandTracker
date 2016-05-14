@@ -1,7 +1,24 @@
-.jumbotron{
-  margin-top: 0px;
+body{
+  color: white;
+}
+
+.black{
+  color: black;
 }
 
 .center{
   text-align: center;
+}
+
+h1, h2, .font {
+  font-family: 'Lobster', cursive;
+}
+
+body{
+  margin: auto;
+  background: url(http://www.thegigtoremember.com/theme/img/photodune-3047795-concert-audience-blurred-background-m-NEW.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
