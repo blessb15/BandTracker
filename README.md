@@ -1,6 +1,6 @@
 # BandTracker
 
-Page where you create bands, venues and bands can play at many venues and venues can have many bands.
+Page where you create bands, add venues. Users can book bands to play at many venues.
 
 ## Setup Instructions
 
