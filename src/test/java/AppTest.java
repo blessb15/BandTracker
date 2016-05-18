@@ -51,6 +51,6 @@ import org.fluentlenium.adapter.FluentTest;
     band.save();
     String url = String.format("http://localhost:4567/bands/%d", band.getId());
     goTo(url);
-    assertThat(pageSource()).contains("Here are the venues The Band have played at");
+    assertThat(pageSource()).contains("Venues The Band played at:");
   }
 }

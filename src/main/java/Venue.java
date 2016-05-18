@@ -68,7 +68,7 @@ public class Venue {
       .addParameter("id", this.getId())
       .executeUpdate();
 
-      String sql2 = "DELETE FROM concerts WHERE venue_id = :venue_id";
+      String sql2 = "DELETE FROM bands_venues WHERE venue_id = :venue_id";
       con.createQuery(sql)
       .addParameter("venue_id", this.getId())
       .executeUpdate();

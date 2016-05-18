@@ -67,23 +67,23 @@ ALTER SEQUENCE bands_id_seq OWNED BY bands.id;
 
 
 --
--- Name: concerts; Type: TABLE; Schema: public; Owner: Blake
+-- Name: bands_venues; Type: TABLE; Schema: public; Owner: Blake
 --
 
-CREATE TABLE concerts (
+CREATE TABLE bands_venues (
     id integer NOT NULL,
     band_id integer,
     venue_id integer
 );
 
 
-ALTER TABLE concerts OWNER TO "Blake";
+ALTER TABLE bands_venues OWNER TO "Blake";
 
 --
--- Name: concerts_id_seq; Type: SEQUENCE; Schema: public; Owner: Blake
+-- Name: bands_venues_id_seq; Type: SEQUENCE; Schema: public; Owner: Blake
 --
 
-CREATE SEQUENCE concerts_id_seq
+CREATE SEQUENCE bands_venues_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -91,13 +91,13 @@ CREATE SEQUENCE concerts_id_seq
     CACHE 1;
 
 
-ALTER TABLE concerts_id_seq OWNER TO "Blake";
+ALTER TABLE bands_venues_id_seq OWNER TO "Blake";
 
 --
--- Name: concerts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Blake
+-- Name: bands_venues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Blake
 --
 
-ALTER SEQUENCE concerts_id_seq OWNED BY concerts.id;
+ALTER SEQUENCE bands_venues_id_seq OWNED BY bands_venues.id;
 
 
 --
@@ -145,7 +145,7 @@ ALTER TABLE ONLY bands ALTER COLUMN id SET DEFAULT nextval('bands_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: Blake
 --
 
-ALTER TABLE ONLY concerts ALTER COLUMN id SET DEFAULT nextval('concerts_id_seq'::regclass);
+ALTER TABLE ONLY bands_venues ALTER COLUMN id SET DEFAULT nextval('bands_venues_id_seq'::regclass);
 
 
 --
@@ -160,6 +160,7 @@ ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::reg
 --
 
 COPY bands (id, name) FROM stdin;
+46	The trees
 \.
 
 
@@ -167,22 +168,24 @@ COPY bands (id, name) FROM stdin;
 -- Name: bands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Blake
 --
 
-SELECT pg_catalog.setval('bands_id_seq', 36, true);
+SELECT pg_catalog.setval('bands_id_seq', 46, true);
 
 
 --
--- Data for Name: concerts; Type: TABLE DATA; Schema: public; Owner: Blake
+-- Data for Name: bands_venues; Type: TABLE DATA; Schema: public; Owner: Blake
 --
 
-COPY concerts (id, band_id, venue_id) FROM stdin;
+COPY bands_venues (id, band_id, venue_id) FROM stdin;
+1	46	19
+2	46	20
 \.
 
 
 --
--- Name: concerts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Blake
+-- Name: bands_venues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Blake
 --
 
-SELECT pg_catalog.setval('concerts_id_seq', 10, true);
+SELECT pg_catalog.setval('bands_venues_id_seq', 2, true);
 
 
 --
@@ -190,6 +193,10 @@ SELECT pg_catalog.setval('concerts_id_seq', 10, true);
 --
 
 COPY venues (id, name, location) FROM stdin;
+18	Moda Center	Portland
+19	Epicodus	Portland
+20	That Place	Somewhere
+21	Cheese Factory	Oregon
 \.
 
 
@@ -197,7 +204,7 @@ COPY venues (id, name, location) FROM stdin;
 -- Name: venues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Blake
 --
 
-SELECT pg_catalog.setval('venues_id_seq', 17, true);
+SELECT pg_catalog.setval('venues_id_seq', 21, true);
 
 
 --
@@ -209,11 +216,11 @@ ALTER TABLE ONLY bands
 
 
 --
--- Name: concerts_pkey; Type: CONSTRAINT; Schema: public; Owner: Blake
+-- Name: bands_venues_pkey; Type: CONSTRAINT; Schema: public; Owner: Blake
 --
 
-ALTER TABLE ONLY concerts
-    ADD CONSTRAINT concerts_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY bands_venues
+    ADD CONSTRAINT bands_venues_pkey PRIMARY KEY (id);
 
 
 --

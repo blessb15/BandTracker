@@ -56,7 +56,7 @@ public class Band {
 
   public void addVenue(Venue venue){
     try(Connection con = DB.sql2o.open()){
-      String sql = "INSERT INTO concerts (band_id, venue_id) VALUES (:band_id, :venue_id)";
+      String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
       con.createQuery(sql)
       .addParameter("band_id", this.getId())
       .addParameter("venue_id", venue.getId())
@@ -66,7 +66,7 @@ public class Band {
 
   public List<Venue> getVenues(){
     try(Connection con = DB.sql2o.open()){
-      String sql = "SELECT venue_id FROM concerts WHERE band_id = :band_id";
+      String sql = "SELECT venue_id FROM bands_venues WHERE band_id = :band_id";
       List<Integer> venue_ids = con.createQuery(sql)
       .addParameter("band_id", this.getId())
       .executeAndFetch(Integer.class);
@@ -90,7 +90,7 @@ public class Band {
       .addParameter("id", this.getId())
       .executeUpdate();
 
-      String sql2 = "DELETE FROM concerts WHERE band_id = :band_id";
+      String sql2 = "DELETE FROM bands_venues WHERE band_id = :band_id";
       con.createQuery(sql2)
       .addParameter("band_id", this.getId())
       .executeUpdate();
